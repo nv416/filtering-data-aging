@@ -61,7 +61,13 @@ if uploaded_file is not None:
         st.dataframe(df.head())
 
         if st.button("Proses Data Sekarang", type="primary"):
-            df_hasil = proses_data_aging(df.copy())
+            # V-- Tambahkan baris ini
+            with st.spinner('Harap tunggu, sedang memproses file besar...'):
+                # V-- Beri spasi/indentasi pada baris ini
+                df_hasil = proses_data_aging(df.copy()) 
+            
+            # Baris ini akan berjalan setelah spinner selesai
+            st.success("🎉 Proses Selesai!")    
             
             st.subheader("🎉 Hasil Setelah Diproses:")
             st.dataframe(df_hasil.head())
